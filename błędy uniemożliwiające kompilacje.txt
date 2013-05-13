@@ -1,0 +1,4 @@
+Error: selected processor does not support Thumb mode `vstmdbeq r0!,{s16-s31}'
+Error: instruction not allowed in IT block -- `stmdb r0!,{r14}'
+Error: selected processor does not support Thumb mode `vldmiaeq r0!,{s16-s31}'
+Error: instruction not allowed in IT block -- `ldmia r0!,{r4-r11}'
