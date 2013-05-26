@@ -50,8 +50,8 @@ int main(void)
 
 	/* GPIOD Periph clock enable */
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE) ;
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE) ;
+	//RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE) ;
+	//RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM4, ENABLE) ;
 
 
 	GPIO_InitTypeDef  GPIO_InitStructure;
