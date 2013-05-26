@@ -9,25 +9,28 @@
 
 xTaskHandle hzapal_ziel;
 xTaskHandle hzapal_czer;
-portTASK_FUNCTION_PROTO( zapal_ziel, pvParameters );
 
 
 
-/*void zapal_ziel(void *pvParameters)
+void zapal_ziel(void *pvParameters)
 {
+	
+	
+	portTickType xLastWakeTime;
+    	xLastWakeTime = xTaskGetTickCount();//pobieramy aktualny czas
  for(;;)
  {
+    	vTaskDelayUntil( &xLastWakeTime, ( 50 / portTICK_RATE_MS ) );
+  	//if(TIM_GetCounter(TIM3) == 200)
+	   //{
+	        //TIM_SetCounter(TIM3,0);
+	        GPIO_ToggleBits(GPIOD,GPIO_Pin_12);
 
-  if(TIM_GetCounter(TIM3) == 200)
-	   {
-	        TIM_SetCounter(TIM3,0);
-	        GPIO_SetBits(GPIOD,GPIO_Pin_12);
-
-	   }
+	   //}
 
  }
 
-}*/
+}
 
 void zapal_czer(void *pvParameters)
 {
@@ -89,26 +92,6 @@ int main(void)
 	   {
 	   }
 }
-
-
-portTASK_FUNCTION( zapal_ziel, pvParameters ) {
-
-    portTickType xLastWakeTime;
-
-    xLastWakeTime = xTaskGetTickCount();
-
-    for(;;) {
-
-        vTaskDelayUntil( &xLastWakeTime, ( 50 / portTICK_RATE_MS ) );
-        //if(TIM_GetCounter(TIM4)==300)
-        	      //{
-        	          //TIM_SetCounter(TIM4,0);
-        	          GPIO_ToggleBits(GPIOD,GPIO_Pin_12);
-        	      //}
-    }
-}
-
-
 
 
 
