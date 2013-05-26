@@ -34,11 +34,12 @@ void zapal_czer(void *pvParameters)
 
  for(;;)
  {
-	 if(TIM_GetCounter(TIM3)==200)
-	      {
-	          TIM_SetCounter(TIM3,0);
+ 	vTaskDelay( 500 / portTICK_RATE_MS );
+	// if(TIM_GetCounter(TIM3)==200)
+	      //{
+	          //TIM_SetCounter(TIM3,0);
 	          GPIO_ToggleBits(GPIOD,GPIO_Pin_14);
-	      }
+	      //}
  }
 }
 
@@ -62,7 +63,7 @@ int main(void)
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOD, &GPIO_InitStructure);
 
-	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure ;
+	/*TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure ;
 	TIM_TimeBaseStructure.TIM_Prescaler = 42000-1;
 	TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up ;
 	TIM_TimeBaseStructure.TIM_Period = 2000;
@@ -76,7 +77,7 @@ int main(void)
 
 	// uruchomienie timer'a
 	TIM_Cmd(TIM3, ENABLE);
-	TIM_Cmd(TIM4, ENABLE);
+	TIM_Cmd(TIM4, ENABLE);*/
 
 
 	xTaskCreate(zapal_ziel,NULL,configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, &hzapal_ziel);
@@ -99,11 +100,11 @@ portTASK_FUNCTION( zapal_ziel, pvParameters ) {
     for(;;) {
 
         vTaskDelayUntil( &xLastWakeTime, ( 50 / portTICK_RATE_MS ) );
-        if(TIM_GetCounter(TIM4)==300)
-        	      {
-        	          TIM_SetCounter(TIM4,0);
+        //if(TIM_GetCounter(TIM4)==300)
+        	      //{
+        	          //TIM_SetCounter(TIM4,0);
         	          GPIO_ToggleBits(GPIOD,GPIO_Pin_12);
-        	      }
+        	      //}
     }
 }
 
