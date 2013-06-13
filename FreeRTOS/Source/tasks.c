@@ -78,7 +78,7 @@ task.h is included from an application file. */
 */
 typedef struct tskTaskControlBlock
 {
-volatile portSTACK_TYPE  *pxTopOfStack;	/*< Points to the location of the last item placed on the tasks stack. THIS MUST BE THE FIRST MEMBER OF THE STRUCT. */
+volatile portSTACK_TYPE  *pxTopOfStack;        /*< Points to the location of the last item placed on the tasks stack. THIS MUST BE THE FIRST MEMBER OF THE STRUCT. */
 
 #if ( portUSING_MPU_WRAPPERS == 1 )
 xMPU_SETTINGS xMPUSettings;	/*< The MPU settings are defined as part of the port layer. THIS MUST BE THE SECOND MEMBER OF THE STRUCT. */
@@ -1129,7 +1129,7 @@ xTickCount = ( portTickType ) 0U;
 /* If configGENERATE_RUN_TIME_STATS is defined then the following
 macro must be defined to configure the timer/counter used to generate
 the run time counter time base. */
-portCONFIGURE_TIMER_FOR_RUN_TIME_STATS();
+//portCONFIGURE_TIMER_FOR_RUN_TIME_STATS();
 
 /* Setting up the timer tick is hardware specific and thus in the
 portable interface. */
@@ -1680,7 +1680,7 @@ unsigned long ulTempCounter;
 #ifdef portALT_GET_RUN_TIME_COUNTER_VALUE
 portALT_GET_RUN_TIME_COUNTER_VALUE( ulTempCounter );
 #else
-ulTempCounter = portGET_RUN_TIME_COUNTER_VALUE();
+//ulTempCounter = portGET_RUN_TIME_COUNTER_VALUE();
 #endif
 
 /* Add the amount of time the task has been running to the accumulated
@@ -2497,7 +2497,4 @@ portENABLE_INTERRUPTS();
 
 #endif
 /*-----------------------------------------------------------*/
-
-
-
 
